@@ -19,8 +19,10 @@ class ViewController: UIViewController {
     
     let logoTextView: UITextView = {
         let textView = UITextView()
-        textView.text = "Bienvenido a Escape Genovez \n Puede visitarnos en nuestros talleres en el Norte y en el Centro"
-        textView.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        let attributedText = NSMutableAttributedString(string: "Bienvenido a Escape Genovez \n Puede visitarnos en nuestros talleres en \nel Norte y en el Centro", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18)])
+        attributedText.append(NSAttributedString(string: "\n\n\nPara mas informacion continue?", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 13), NSAttributedString.Key.foregroundColor: UIColor.init(cgColor: #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1))]))
+            textView.attributedText = attributedText
         textView.font = UIFont.init(name: "futura", size: 18)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textAlignment = .center
@@ -54,7 +56,7 @@ class ViewController: UIViewController {
         
         NSLayoutConstraint.activate([logoImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor), logoImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor),   logoImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.6)])
         
-        NSLayoutConstraint.activate([logoTextView.topAnchor.constraint(equalTo:logoImageView.bottomAnchor, constant: 120), logoTextView.leftAnchor.constraint(equalTo: view.leftAnchor), logoTextView.rightAnchor.constraint(equalTo: view.rightAnchor), logoTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)])
+        NSLayoutConstraint.activate([logoTextView.topAnchor.constraint(equalTo:topImageContainerView.bottomAnchor), logoTextView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24), logoTextView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24), logoTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)])
     }
     
     
